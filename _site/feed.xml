@@ -19,9 +19,27 @@
 &lt;/ul&gt;
 </description>
         
-        <pubDate>Thu, 19 Nov 2015 08:00:00 +0000</pubDate>
-        <link>http://quickswift.tips/2015/guard-and-defer/</link>
-        <guid isPermaLink="true">http://quickswift.tips/2015/guard-and-defer/</guid>
+        <pubDate>Thu, 19 Nov 2015 14:04:29 +0000</pubDate>
+        <link>http://quickswift.tips/2015/a-draft-post/</link>
+        <guid isPermaLink="true">http://quickswift.tips/2015/a-draft-post/</guid>
+      </item>
+    
+      <item>
+        <title>The guard keyword in Swift 2.0</title>
+        
+        
+          <description>&lt;h3&gt;Requirements&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Swift 2.0&lt;/li&gt;
+&lt;li&gt;iOS 9&lt;/li&gt;
+&lt;li&gt;Xcode 7&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        
+        <pubDate>Thu, 19 Nov 2015 13:00:00 +0000</pubDate>
+        <link>http://quickswift.tips/2015/the-guard-keyword/</link>
+        <guid isPermaLink="true">http://quickswift.tips/2015/the-guard-keyword/</guid>
       </item>
     
   </channel>
