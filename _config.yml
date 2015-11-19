@@ -1,0 +1,44 @@
+name: Quick Swift Tips
+description: Try. Fail. Learn. Repeat
+meta_description: "Ross Gibson's blog"
+
+aboutPage: true
+
+markdown: redcarpet
+highlighter: pygments
+
+paginate: 20
+baseurl: /
+domain_name: 'http://quickswift.tips'
+google_analytics: 'UA-XXXXXXXX-X'
+disqus: true
+disqus_shortname: 'quickswifttips'
+
+# Details for the RSS feed generator
+url:            'http://quickswift.tips'
+author:         'Quick Swift Tips'
+# authorTwitter:  'YourTwitterUsername'
+
+permalink:       /:year/:title/
+
+defaults:
+    -
+        scope:
+            path: "" # empty string for all files
+            type: pages
+        values:
+            layout: default
+    -
+        scope:
+            path: "" # empty string for all files
+            type: posts
+        values:
+            layout: post
+    -
+        scope:
+            path: ""
+            type: drafts
+        values:
+            layout: post
+
+gems: [jekyll-paginate]

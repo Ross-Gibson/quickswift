@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Quick Swift Tips</title>
+    <description>Try. Fail. Learn. Repeat</description>
+    <link>http://quickswift.tips</link>
+    <atom:link href="http://quickswift.tips/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>The guard keyword in Swift 2.0</title>
+        
+        
+          <description>&lt;h3&gt;Requirements&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Swift 2.0&lt;/li&gt;
+&lt;li&gt;iOS 9&lt;/li&gt;
+&lt;li&gt;Xcode 7&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        
+        <pubDate>Thu, 19 Nov 2015 08:00:00 +0000</pubDate>
+        <link>http://quickswift.tips/2015/guard-and-defer/</link>
+        <guid isPermaLink="true">http://quickswift.tips/2015/guard-and-defer/</guid>
+      </item>
+    
+  </channel>
+</rss>

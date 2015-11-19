@@ -1,0 +1,67 @@
+---
+title:  "The guard keyword in Swift 2.0"
+date:   2015-11-19 13:00:00
+description: A neater if/else statement
+---
+
+### Requirements
+- Swift 2.0
+- iOS 9
+- Xcode 7
+
+---
+
+### ⌘ + C, ⌘ + V
+```swift
+func fooGuard(value: Int?) {
+    // Check for errors
+    guard let value = value else {
+        // Handle the error here
+        return
+    }
+    
+    // Do something with the value here
+    print(value)
+}
+```
+---
+
+### **DO NOT READ THIS**
+In very simple terms think of guard as an if/else statement that handles the else condition first [__1__].
+
+- Unwrapped optionals can remain in scope
+- Enables early returns with less nesting
+- Removes the need for reverse logic
+
+---
+
+### TL;DR
+The guard keyword in Swift 2.0 gives rise to clearer and easier to read early returns. It enables for a [happy path](https://en.wikipedia.org/wiki/Happy_path "Wikipedia") in the logic, meaning that conditions are checked against the expected result opposed to reversing the logic and testing for the case that would result in an error. This approach improves readability and generally results in less code with fewer bugs.
+
+Comparing the code below with the version above highlights the happy path and shows how variables unwrapped from optionals can remain in scope.
+
+```swift
+func fooGuard(value: Int?) {
+    // Check for errors
+    if value == nil {
+        // Handle the error here
+        return
+    } else {
+        // Do something with the value here
+        print(value)
+    }
+}
+```
+
+---
+
+### Notes
+
+ [__1__] Guard is capable of much more than this, especially when used in combination with error handling.
+
+---
+
+### Enlightenment
+- [Hacking with Swift: The guard keyword in Swift 2](https://www.hackingwithswift.com/new-syntax-swift-2-guard "Hacking with Swift")
+- [NSHipster: Guard & defer](http://nshipster.com/guard-and-defer "NSHipster")
+- [Natasha The Robot: Swift 2.0: Why Guard is Better than If](http://natashatherobot.com/swift-guard-better-than-if/ "Natasha The Robot")
