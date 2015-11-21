@@ -10,14 +10,14 @@ highlighter: pygments
 paginate: 20
 baseurl: /
 domain_name: 'http://quickswift.tips'
-google_analytics: 'UA-XXXXXXXX-X'
+google_analytics: 'UA-70396488-1'
 disqus: true
 disqus_shortname: 'quickswifttips'
 
 # Details for the RSS feed generator
 url:            'http://quickswift.tips'
 author:         'Quick Swift Tips'
-# authorTwitter:  'YourTwitterUsername'
+authorTwitter:  'RossJamesGibson'
 
 permalink:       /:year/:title/
 

@@ -1,0 +1,50 @@
+---
+title:  "Where"
+date:   2015-11-21 17:15:00
+description: Where to use where
+---
+
+### Requirements
+- Swift 1.2
+
+---
+
+### ⌘ + C, ⌘ + V
+```swift
+func fooWhere(numbers: [Int]) {
+    for number in numbers where number > 0 {
+        print(number)
+    }
+}
+
+fooWhere([-3, -2, -1, 0, 1, 2, 3])
+// Prints
+// "1"
+// "2"
+// "3"
+
+```
+---
+
+### **DO NOT READ THIS**
+The where keyword that lets you test for boolean conditions inline, and can be used with:
+
+- for-in
+- do-catch
+- while
+- if
+- guard
+- switch-case
+- type constraints
+
+---
+
+### TL;DR
+In Swift 1.2 the keyword where defines an additional expression which must evaluate to true in order for the predicate to be satisfied. Where is part of control flow of Swift and may be used almost everywhere.
+
+
+---
+
+
+### Enlightenment
+- [Marcin Krzyżanowski: Where "where" may be used?](http://blog.krzyzanowskim.com/2015/11/13/where-where-may-be-used/ "Marcin Krzyżanowski's Blog")

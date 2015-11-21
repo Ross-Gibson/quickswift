@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Quick Swift Tips - Defer</title>
+  <link rel="shortcut icon" href="/assets/images/favicons/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="/rss.xml">
+  <link rel="stylesheet" href="/assets/css/highlight.css">
+
+  <!-- Favicons from here: http://realfavicongenerator.net/favicon?file_id=p1a4b51nmo1k6po6qsp1166jv2l6#.VktYvN_hBE4 -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/assets/images/favicons/manifest.json">
+  <link rel="mask-icon" href="/assets/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+  <nav class="main-nav">
+    
+        <a href="/"> <span class="arrow">←</span> Posts </a>
+    
+
+    
+        
+            <a href="/about">About </a>
+        
+    
+    <a class="cta" href="/feed.xml">Subscribe</a>
+</nav>
+
+  
+
+  <section id="wrapper" class="">
+    <article class="post">
+    <header>
+        <h1>Defer</h1>
+        <h2 class="headline">November 21, 2015</h2>
+    </header>
+    <section id="post-body">
+        <h3>Requirements</h3>
+
+<ul>
+<li>Swift 2.0</li>
+<li>iOS 9</li>
+<li>Xcode 7</li>
+</ul>
+
+<hr>
+
+<h3>⌘ + C, ⌘ + V</h3>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="nf">fooDefer</span><span class="p">(</span><span class="nl">input</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">defer</span> <span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Called 4th&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">defer</span> <span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Called 3rd&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Called 1st&quot;</span><span class="p">)</span>
+
+    <span class="n">guard</span> <span class="k">let</span> <span class="n">_</span> <span class="o">=</span> <span class="n">input</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Called 2nd: input == nil&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="c1">// exiting scope, calls the defer blocks</span>
+    <span class="p">}</span>
+
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Called 2nd: \(input)&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">fooDefer</span><span class="p">(</span><span class="nb">nil</span><span class="p">)</span>
+<span class="c1">// Prints</span>
+<span class="c1">// &quot;Called 1st&quot;</span>
+<span class="c1">// &quot;Called 2nd: input == nil&quot;</span>
+<span class="c1">// &quot;Called 3rd&quot;</span>
+<span class="c1">// &quot;Called 4th&quot;</span>
+
+<span class="n">fooDefer</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
+<span class="c1">// Prints</span>
+<span class="c1">// &quot;Called 1st&quot;</span>
+<span class="c1">// &quot;Called 2nd: Hello World!&quot;</span>
+<span class="c1">// &quot;Called 3rd&quot;</span>
+<span class="c1">// &quot;Called 4th&quot;</span>
+</code></pre></div>
+<hr>
+
+<h3><strong>DO NOT READ THIS</strong></h3>
+
+<p>Code inside a defer will always be executed before the block looses scope.</p>
+
+<ul>
+<li>Defers execution until the current scope is exited</li>
+<li>Called regardless of how execution leaves the current block of code</li>
+<li>Defers can be stacked</li>
+</ul>
+
+<hr>
+
+<h3>TL;DR</h3>
+
+<p>Code inside a defer block will not execute until leaving the current scope, and will execute regardless of how this happens. This makes defer blocks very useful for error handling [<strong>1</strong>] and performing unconditional clean-up, whether or not some operation succeeds or fails. This approach helps to improve code readability and quality.</p>
+
+<p>A very powerful feature in Swift is the ability to stack defers. When doing this deferred actions are executed in reverse order of how they are specified, effectively unwinding the stack — that is, the code in the first defer statement executes after code in the second, and so on.</p>
+
+<p>Because defer blocks are called when leaving scope it makes sense that <strong>a deferred block may not contain any code that would transfer control out of the block</strong>, such as a break or a return, or by throwing an error. </p>
+
+<hr>
+
+<h3>Notes</h3>
+
+<p>[<strong>1</strong>] A defer statement can be used even when no error handling code is involved.</p>
+
+<hr>
+
+<h3>Enlightenment</h3>
+
+<ul>
+<li><a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ErrorHandling.html" title="iOS Developer Library">Apple: The Swift Programming Language (Swift 2.1)</a></li>
+<li><a href="http://austinzheng.com/2015/06/08/swift-2-control-flow/" title="Austin Zheng&#39;s Blog">Austin Zheng: Control Flow and Error Handling</a></li>
+<li><a href="http://www.thomashanning.com/swift-2-0-defer/" title="Thomas Hanning&#39;s Blog">Thomas Hanning: Swift 2.0 - defer</a></li>
+<li><a href="https://www.hackingwithswift.com/new-syntax-swift-2-defer" title="Hacking with Swift">Hacking with Swift: The defer keyword in Swift 2</a></li>
+</ul>
+
+    </section>
+</article>
+<footer id="post-meta" class="clearfix">
+    <a href="http://twitter.com/RossJamesGibson">
+        <img class="avatar" src="/assets/images/avatar.png">
+        <div>
+            <span class="dark">Quick Swift Tips</span>
+            <span>Try. Fail. Learn. Repeat</span>
+        </div>
+    </a>
+
+    <section id="sharing">
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=http://quickswift.tips/2015/defer/ - Defer by @RossJamesGibson"><span class="icon-twitter"> Tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+    </section>
+</footer>
+
+<!-- Disqus comments -->
+
+    <div class="archive readmore">
+        <h3>Comments</h3>
+        <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'quickswifttips';
+        var disqus_developer = 0; // developer mode is on
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+    </div>
+
+
+<!-- Archive post list -->
+<!-- Only show more posts if there is more than one post -->
+
+    
+    <ul id="post-list" class="archive readmore">
+        <h3>More Quick Swift Tips</h3>
+        
+            <!-- Do not show this post in the list of posts -->
+            
+                <li>
+                    <a href="/2015/where/">Where<aside class="dates">Nov 21</aside></a>
+                </li>
+            
+        
+            <!-- Do not show this post in the list of posts -->
+            
+        
+            <!-- Do not show this post in the list of posts -->
+            
+                <li>
+                    <a href="/2015/guard/">Guard<aside class="dates">Nov 19</aside></a>
+                </li>
+            
+        
+    </ul>
+
+
+
+
+<!-- Footer -->
+<footer id="footer">
+    <p class="small">© Copyright 2015 Quick Swift Tips</p>
+</footer>
+
+
+
+
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/highlight.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-70396488-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
+
+
+

@@ -7,7 +7,23 @@
     <atom:link href="http://quickswift.tips/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>The guard keyword in Swift 2.0</title>
+        <title>Where</title>
+        
+        
+          <description>&lt;h3&gt;Requirements&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Swift 1.2&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        
+        <pubDate>Sat, 21 Nov 2015 17:15:00 +0000</pubDate>
+        <link>http://quickswift.tips/2015/where/</link>
+        <guid isPermaLink="true">http://quickswift.tips/2015/where/</guid>
+      </item>
+    
+      <item>
+        <title>Defer</title>
         
         
           <description>&lt;h3&gt;Requirements&lt;/h3&gt;
@@ -19,9 +35,27 @@
 &lt;/ul&gt;
 </description>
         
-        <pubDate>Thu, 19 Nov 2015 08:00:00 +0000</pubDate>
-        <link>http://quickswift.tips/2015/guard-and-defer/</link>
-        <guid isPermaLink="true">http://quickswift.tips/2015/guard-and-defer/</guid>
+        <pubDate>Sat, 21 Nov 2015 13:00:00 +0000</pubDate>
+        <link>http://quickswift.tips/2015/defer/</link>
+        <guid isPermaLink="true">http://quickswift.tips/2015/defer/</guid>
+      </item>
+    
+      <item>
+        <title>Guard</title>
+        
+        
+          <description>&lt;h3&gt;Requirements&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Swift 2.0&lt;/li&gt;
+&lt;li&gt;iOS 9&lt;/li&gt;
+&lt;li&gt;Xcode 7&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        
+        <pubDate>Thu, 19 Nov 2015 13:00:00 +0000</pubDate>
+        <link>http://quickswift.tips/2015/guard/</link>
+        <guid isPermaLink="true">http://quickswift.tips/2015/guard/</guid>
       </item>
     
   </channel>

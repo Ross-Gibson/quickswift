@@ -1,5 +1,5 @@
 ---
-title:  "The guard keyword in Swift 2.0"
+title:  "Guard"
 date:   2015-11-19 13:00:00
 description: A neater if/else statement
 ---
@@ -13,15 +13,15 @@ description: A neater if/else statement
 
 ### ⌘ + C, ⌘ + V
 ```swift
-func fooGuard(value: Int?) {
+func fooGuard(input: Int?) {
     // Check for errors
-    guard let value = value else {
+    guard let input = input else {
         // Handle the error here
         return
     }
     
-    // Do something with the value here
-    print(value)
+    // Do something with the input here
+    print(input)
 }
 ```
 ---
@@ -41,14 +41,14 @@ The guard keyword in Swift 2.0 gives rise to clearer and easier to read early re
 Comparing the code below with the version above highlights the happy path and shows how variables unwrapped from optionals can remain in scope.
 
 ```swift
-func fooGuard(value: Int?) {
+func fooGuard(input: Int?) {
     // Check for errors
-    if value == nil {
+    if input == nil {
         // Handle the error here
         return
     } else {
-        // Do something with the value here
-        print(value)
+        // Do something with the input here
+        print(input)
     }
 }
 ```
