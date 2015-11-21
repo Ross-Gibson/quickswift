@@ -58,60 +58,45 @@
         <h3>Requirements</h3>
 
 <ul>
-<li>Swift 2.0</li>
-<li>iOS 9</li>
-<li>Xcode 7</li>
+<li>Swift 1.2</li>
 </ul>
 
 <hr>
 
 <h3>⌘ + C, ⌘ + V</h3>
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-
-<span class="n">fooWhere</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
-
-<span class="k">func</span> <span class="n">fooWhere</span><span class="p">(</span><span class="nl">numbers</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">])</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="nf">fooWhere</span><span class="p">(</span><span class="nl">numbers</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">])</span> <span class="p">{</span>
     <span class="k">for</span> <span class="n">number</span> <span class="k">in</span> <span class="n">numbers</span> <span class="k">where</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="n">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="c1">// prints: &quot;1, 2, 3&quot;</span>
+        <span class="n">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="n">fooWhere</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="c1">// Prints</span>
+<span class="c1">// &quot;1&quot;</span>
+<span class="c1">// &quot;2&quot;</span>
+<span class="c1">// &quot;3&quot;</span>
 </code></pre></div>
 <hr>
 
 <h3><strong>DO NOT READ THIS</strong></h3>
 
-<p>Code inside a defer will always be executed before the block looses scope. This can be very useful for error handeling [<strong>1</strong>].</p>
+<p>The where keyword that lets you test for boolean conditions inline, and can be used with:</p>
 
 <ul>
-<li>Defers execution until the current scope is exited</li>
-<li>Called regardless of how execution leaves the current block of code</li>
-<li>Defers can be stacked. When doing this deferred actions are executed in reverse order of how they are specified</li>
-<li><strong>Do not</strong> try to exit scope inside a defer by using return, break or by throwing an error</li>
+<li>for-in</li>
+<li>do-catch</li>
+<li>while</li>
+<li>if</li>
+<li>guard</li>
+<li>switch-case</li>
+<li>type constraints</li>
 </ul>
 
 <hr>
 
 <h3>TL;DR</h3>
 
-<p>The guard keyword in Swift 2.0 gives rise to clearer and easier to read early returns. It enables for a <a href="https://en.wikipedia.org/wiki/Happy_path" title="Wikipedia">happy path</a> in the logic, meaning that conditions are checked against the expected result opposed to reversing the logic and testing for the case that would result in an error. This approach improves readability and generally results in less code with fewer bugs.</p>
-
-<p>Comparing the code below with the version above highlights the happy path and shows how variables unwrapped from optionals can remain in scope.</p>
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="nf">fooGuard</span><span class="p">(</span><span class="nl">value</span><span class="p">:</span> <span class="n">Int</span><span class="o">?</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// Check for errors</span>
-    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="nb">nil</span> <span class="p">{</span>
-        <span class="c1">// Handle the error here</span>
-        <span class="k">return</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="c1">// Do something with the value here</span>
-        <span class="n">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr>
-
-<h3>Notes</h3>
-
-<p>[<strong>1</strong>] A defer statement can be used even when no error handling code is involved.</p>
+<p>In Swift 1.2 the keyword where defines an additional expression which must evaluate to true in order for the predicate to be satisfied. Where is part of control flow of Swift and may be used almost everywhere.</p>
 
 <hr>
 
@@ -124,7 +109,7 @@
     </section>
 </article>
 <footer id="post-meta" class="clearfix">
-    <a href="http://twitter.com/">
+    <a href="http://twitter.com/RossJamesGibson">
         <img class="avatar" src="/assets/images/avatar.png">
         <div>
             <span class="dark">Quick Swift Tips</span>
@@ -133,7 +118,7 @@
     </a>
 
     <section id="sharing">
-        <a class="twitter" href="https://twitter.com/intent/tweet?text=http://quickswift.tips/2015/where/ - Where by @"><span class="icon-twitter"> Tweet</span></a>
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=http://quickswift.tips/2015/where/ - Where by @RossJamesGibson"><span class="icon-twitter"> Tweet</span></a>
 
 <a class="facebook" href="#" onclick="
     window.open(
@@ -216,7 +201,7 @@
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-XXXXXXXX-X', 'auto');
+    ga('create', 'UA-70396488-1', 'auto');
     ga('send', 'pageview');
   </script>
 </body>
