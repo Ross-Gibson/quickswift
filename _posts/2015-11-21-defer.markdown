@@ -1,0 +1,79 @@
+---
+title:  "Defer"
+date:   2015-11-21 13:00:00
+description: One last thing...
+---
+
+### Requirements
+- Swift 2.0
+- iOS 9
+- Xcode 7
+
+---
+
+### ⌘ + C, ⌘ + V
+```swift
+func fooDefer(input: String?) {
+    defer {
+        print("Called 4th")
+    }
+    
+    defer {
+        print("Called 3rd")
+    }
+    
+    print("Called 1st")
+    
+    guard let _ = input else {
+        print("Called 2nd: input == nil")
+        return // exiting scope, calls the defer blocks
+    }
+    
+    print("Called 2nd: \(input)")
+}
+
+fooDefer(nil)
+// Prints
+// "Called 1st"
+// "Called 2nd: input == nil"
+// "Called 3rd"
+// "Called 4th"
+
+fooDefer("Hello World!")
+// Prints
+// "Called 1st"
+// "Called 2nd: Hello World!"
+// "Called 3rd"
+// "Called 4th"
+```
+---
+
+### **DO NOT READ THIS**
+Code inside a defer will always be executed before the block looses scope.
+
+- Defers execution until the current scope is exited
+- Called regardless of how execution leaves the current block of code
+- Defers can be stacked
+
+---
+
+### TL;DR
+Code inside a defer block will not execute until leaving the current scope, and will execute regardless of how this happens. This makes defer blocks very useful for error handling [__1__] and performing unconditional clean-up, whether or not some operation succeeds or fails. This approach helps to improve code readability and quality.
+
+A very powerful feature in Swift is the ability to stack defers. When doing this deferred actions are executed in reverse order of how they are specified, effectively unwinding the stack — that is, the code in the first defer statement executes after code in the second, and so on.
+
+Because defer blocks are called when leaving scope it makes sense that __a deferred block may not contain any code that would transfer control out of the block__, such as a break or a return, or by throwing an error. 
+
+---
+
+### Notes
+
+ [__1__] A defer statement can be used even when no error handling code is involved.
+
+---
+
+### Enlightenment
+- [Apple: The Swift Programming Language (Swift 2.1)](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ErrorHandling.html "iOS Developer Library")
+- [Austin Zheng: Control Flow and Error Handling](http://austinzheng.com/2015/06/08/swift-2-control-flow/ "Austin Zheng's Blog")
+- [Thomas Hanning: Swift 2.0 - defer](http://www.thomashanning.com/swift-2-0-defer/ "Thomas Hanning's Blog")
+- [Hacking with Swift: The defer keyword in Swift 2](https://www.hackingwithswift.com/new-syntax-swift-2-defer "Hacking with Swift")
