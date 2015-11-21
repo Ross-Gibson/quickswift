@@ -10,7 +10,7 @@ highlighter: pygments
 paginate: 20
 baseurl: /
 domain_name: 'http://quickswift.tips'
-google_analytics: 'UA-XXXXXXXX-X'
+google_analytics: 'UA-70396488-1'
 disqus: true
 disqus_shortname: 'quickswifttips'
 
