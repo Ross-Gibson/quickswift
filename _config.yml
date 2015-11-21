@@ -17,7 +17,7 @@ disqus_shortname: 'quickswifttips'
 # Details for the RSS feed generator
 url:            'http://quickswift.tips'
 author:         'Quick Swift Tips'
-# authorTwitter:  'YourTwitterUsername'
+authorTwitter:  'RossJamesGibson'
 
 permalink:       /:year/:title/
 
